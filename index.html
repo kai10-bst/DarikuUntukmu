@@ -309,36 +309,39 @@
     let currentPageIndex = 0;
 
     function nextPage() {
-        const music = document.getElementById("bg-music");
+    const music = document.getElementById("bg-music");
 
-        // Set volume (cukup sekali, tapi gak masalah di sini)
-        music.volume = 0.4;
+    music.volume = 0.4;
 
-        // Play saat klik pertama
-        if (currentPageIndex === 0) {
-            music.play().catch(() => {});
-        }
+    // play musik pertama kali
+    if (currentPageIndex === 0) {
+        music.play().catch(() => {});
+    }
 
-        document.getElementById(pages[currentPageIndex]).classList.remove('active');
-        
-        currentPageIndex++;
+    // hide page sekarang
+    document.getElementById(pages[currentPageIndex]).classList.remove('active');
 
-        if (currentPageIndex >= pages.length - 1) {
-            currentPageIndex = pages.length - 1;
-            document.getElementById('next-btn').classList.add('hidden');
-        }
+    // naik page
+    currentPageIndex++;
 
-        document.getElementById(pages[currentPageIndex]).classList.add('active');
+    // batas akhir
+    if (currentPageIndex >= pages.length - 1) {
+        currentPageIndex = pages.length - 1;
+        document.getElementById('next-btn').classList.add('hidden');
+    }
 
-        // trigger animasi saat masuk page-0
-if (pages[currentPageIndex] === 'page-0') {
-    const stars = document.querySelectorAll('.star');
+    // show page baru
+    document.getElementById(pages[currentPageIndex]).classList.add('active');
 
-    stars.forEach(star => {
-        star.style.animation = 'none';
-        star.offsetHeight; // reset
-        star.style.animation = '';
-    });
+    // ⭐ trigger animasi kalau masuk page-0
+    if (pages[currentPageIndex] === 'page-0') {
+        const stars = document.querySelectorAll('.star');
+
+        stars.forEach(star => {
+            star.style.animation = 'none';
+            star.offsetHeight; // reset
+            star.style.animation = '';
+        });
 }
     </script>
 
