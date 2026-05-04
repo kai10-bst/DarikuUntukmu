@@ -209,27 +209,38 @@
         </div>
 
     </div>
-
+    
+<audio id="bg-music" loop>
+    <source src="space-song.mp3" type="audio/mpeg">
+</audio>
+    
     <script>
         // Array berisi ID dari setiap halaman
         const pages = ['page-home', 'page-0', 'page-1', 'page-2', 'page-3', 'page-4'];
         let currentPageIndex = 0;
 
         function nextPage() {
-            // Sembunyikan halaman saat ini
-            document.getElementById(pages[currentPageIndex]).classList.remove('active');
-            
-            // Lanjut ke halaman berikutnya
-            currentPageIndex++;
+    const music = document.getElementById("bg-music");
 
-            // Jika sudah mencapai halaman terakhir (Page 4)
-            if (currentPageIndex >= pages.length - 1) {
-                currentPageIndex = pages.length - 1; // Pastikan tidak melebihi index
-                document.getElementById('next-btn').classList.add('hidden'); // Sembunyikan tombol Next
-            }
+    // Set volume
+    music.volume = 0.4;
 
-            // Tampilkan halaman baru
-            document.getElementById(pages[currentPageIndex]).classList.add('active');
+    // Play saat klik pertama
+    if (currentPageIndex === 0) {
+        music.play();
+    }
+
+    document.getElementById(pages[currentPageIndex]).classList.remove('active');
+    
+    currentPageIndex++;
+
+    if (currentPageIndex >= pages.length - 1) {
+        currentPageIndex = pages.length - 1;
+        document.getElementById('next-btn').classList.add('hidden');
+    }
+
+    document.getElementById(pages[currentPageIndex]).classList.add('active');
+        }
         }
     </script>
 
