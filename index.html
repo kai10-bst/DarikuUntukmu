@@ -144,6 +144,74 @@
             z-index: 2;
         }
 
+        /* === BINTANG BIDUK === */
+.biduk {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    height: 150px;
+}
+
+/* ===== BINTANG ===== */
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px white;
+    
+    opacity: 0;
+    z-index: 2;
+    
+    animation: fadeStar 1s forwards;
+}
+
+/* ===== GARIS KONSTELASI ===== */
+.line {
+    position: absolute;
+    height: 2px;
+    background: white;
+    opacity: 0;
+    animation: fadeLine 1s forwards;
+    z-index: 1;
+        }
+/* posisi bintang */
+.s1 { top: 10px; left: 40%; }
+.s2 { top: 30px; left: 50%; }
+.s3 { top: 50px; left: 60%; }
+.s4 { top: 70px; left: 55%; }
+.s5 { top: 90px; left: 45%; }
+.s6 { top: 70px; left: 35%; }
+.s7 { top: 50px; left: 30%; }
+
+/* ===== ANIMASI BINTANG ===== */
+@keyframes fadeStar {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== ANIMASI GARIS ===== */
+@keyframes fadeLine {
+    from { opacity: 0; }
+    to { opacity: 0.6; }
+}
+
+/* setiap bintang punya delay beda */
+.s1 { top: 10px; left: 40%; animation: fadeStar 1.5s forwards 0s; }
+.s2 { top: 30px; left: 50%; animation: fadeStar 1.5s forwards 0.5s; }
+.s3 { top: 50px; left: 60%; animation: fadeStar 1.5s forwards 1s; }
+.s4 { top: 70px; left: 55%; animation: fadeStar 1.5s forwards 1.5s; }
+.s5 { top: 90px; left: 45%; animation: fadeStar 1.5s forwards 2s; }
+.s6 { top: 70px; left: 35%; animation: fadeStar 1.5s forwards 2.5s; }
+.s7 { top: 50px; left: 30%; animation: fadeStar 1.5s forwards 3s; }
+
     </style>
 </head>
 <body>
@@ -158,6 +226,25 @@
         </div>
 
         <div class="page" id="page-0">
+            <!-- BINTANG BIDUK -->
+<div class="biduk">
+    <span class="star s1"></span>
+    <span class="star s2"></span>
+    <span class="star s3"></span>
+    <span class="star s4"></span>
+    <span class="star s5"></span>
+    <span class="star s6"></span>
+    <span class="star s7"></span>
+
+    <!-- GARIS KONSTELASI -->
+<div class="line l1"></div>
+<div class="line l2"></div>
+<div class="line l3"></div>
+<div class="line l4"></div>
+<div class="line l5"></div>
+<div class="line l6"></div>
+    
+</div>
             <h2 class="font-beau color-lemon title-30">Bintang Biduku</h2>
             <div class="text-left font-mont">
                 "Saat samudera kehidupan bergejolak tanpa suara,<br>
@@ -242,7 +329,17 @@
         }
 
         document.getElementById(pages[currentPageIndex]).classList.add('active');
-    }
+
+        // trigger animasi saat masuk page-0
+if (pages[currentPageIndex] === 'page-0') {
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach(star => {
+        star.style.animation = 'none';
+        star.offsetHeight; // reset
+        star.style.animation = '';
+    });
+}
     </script>
 
 </body>
