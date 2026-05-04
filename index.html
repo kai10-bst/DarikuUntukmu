@@ -85,13 +85,15 @@
 
         /* --- Container Utama Scene --- */
         .scene {
-            display: none; /* Sembunyikan semua scene di awal */
-            width: 100%;
-            height: 100%;
-            padding: 40px 30px; /* Padding agar teks tidak mentok pinggir HP */
-            position: relative;
-            z-index: 10; /* Di atas hiasan */
-            flex-direction: column;
+    display: none;
+    width: 100%;
+    height: 100vh; /* Menggunakan vh agar tetap penuh */
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: space-between; /* Ini akan otomatis membagi ruang */
+    align-items: center;
         }
 
         .scene.active {
@@ -144,28 +146,35 @@
             text-align: center;
             width: 100%;
             position: absolute;
-            bottom: 60px; /* Di atas tombol next */
+            bottom: 60px; 
             left: 0;
         }
 
         /* --- Styling Tombol --- */
         .btn-next {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
-            color: var(--white);
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            text-align: center;
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            padding: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    cursor: pointer;
+    width: 120px; 
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    z-index: 100; 
+}
+
+.btn-next:active {
+    background: var(--gold-yellow);
+    color: black;
+}
         }
 
         .btn-next:active {
