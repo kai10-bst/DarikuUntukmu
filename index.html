@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dariku Untukmu</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold-yellow: #FFD700;
+            --lemon-yellow: #FFF700;
+            --white: #FFFFFF;
+            --bg-color: #000411; /* Biru sangat tua mendekati hitam */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* --- Hiasan Latar Belakang --- */
+        .background-decor {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none; /* Agar tidak bisa diklik */
+            z-index: 1;
+        }
+
+        /* Bulan sabit */
+        .moon {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 10px 10px 0 0 var(--lemon-yellow);
+            opacity: 0.8;
+            filter: blur(1px);
+        }
+
+        /* Bintang-bintang (menggunakan box-shadow multi untuk performa) */
+        .stars {
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            box-shadow: 
+                25vw 10vh 1px 1px #fff, 60vw 15vh 0px 0px #fff, 80vw 25vh 1px 0px #fff,
+                10vw 30vh 0px 1px #fff, 40vw 40vh 1px 0px #fff, 90vw 50vh 0px 0px #fff,
+                20vw 60vh 1px 1px #fff, 70vw 70vh 0px 0px #fff, 30vw 80vh 1px 0px #fff,
+                55vw 85vh 0px 1px #fff, 85vw 90vh 1px 1px #fff, 15vw 95vh 0px 0px #fff,
+                /* Tambahan variasi warna gold */
+                35vw 20vh 1px 1px var(--gold-yellow), 65vw 35vh 1px 0px var(--gold-yellow),
+                5vw 75vh 1px 1px var(--gold-yellow), 95vw 15vh 1px 0px var(--gold-yellow);
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* --- Container Utama Scene --- */
+        .scene {
+            display: none; /* Sembunyikan semua scene di awal */
+            width: 100%;
+            height: 100%;
+            padding: 40px 30px; /* Padding agar teks tidak mentok pinggir HP */
+            position: relative;
+            z-index: 10; /* Di atas hiasan */
+            flex-direction: column;
+        }
+
+        .scene.active {
+            display: flex;
+        }
+
+        /* --- Styling Teks --- */
+        .title-home {
+            font-family: 'Beau Rivage', cursive;
+            color: var(--gold-yellow);
+            font-size: 50px;
+            text-align: center;
+            margin: auto 0; /* Taruh tepat di tengah layar */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .title-regular {
+            font-family: 'Beau Rivage', cursive;
+            color: var(--lemon-yellow);
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .content-left {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: var(--white);
+            font-size: 15px;
+            text-align: left;
+            line-height: 1.6;
+            margin-bottom: auto; /* Mendorong tombol ke bawah */
+        }
+
+        .content-center {
+            /* Menggunakan Great Vibes sebagai pengganti Dream Weaver */
+            font-family: 'Great Vibes', cursive;
+            color: var(--white);
+            font-size: 25px;
+            text-align: center;
+            line-height: 1.4;
+            margin: auto 0; /* Tengah layar */
+        }
+
+        .signature {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            color: var(--white);
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            bottom: 60px; /* Di atas tombol next */
+            left: 0;
+        }
+
+        /* --- Styling Tombol --- */
+        .btn-next {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            color: var(--white);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            padding: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .btn-next:active {
+            opacity: 1;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="background-decor">
+        <div class="stars"></div>
+        <div class="moon"></div>
+    </div>
+
+    <div class="scene active" id="scene-home">
+        <h1 class="title-home">Dariku Untukmu</h1>
+        <button class="btn-next" onclick="nextScene(0)">Next</button>
+    </div>
+
+    <div class="scene" id="scene-0">
+        <h2 class="title-regular">Bintang Biduku</h2>
+        <p class="content-left">
+            "Saat samudera kehidupan bergejolak tanpa suara,<br>
+            kau muncul sebagai titik utara yang paling setia.<br>
+            Menjadi kompas saat aku kehilangan arah,<br>
+            menuntunku pulang saat langkah terasa lelah."
+        </p>
+        <button class="btn-next" onclick="nextScene(1)">Next</button>
+    </div>
+
+    <div class="scene" id="scene-1">
+        <h2 class="title-regular">Kau adalah Matahariku</h2>
+        <p class="content-left">
+            "Yang menyeka embun dingin di setiap pagi,<br>
+            menghangatkan jiwa dengan cahaya yang tak pernah rugi.<br>
+            Kau adalah alasan hariku penuh dengan warna,<br>
+            mengubah mendung menjadi pelangi yang mempesona."
+        </p>
+        <button class="btn-next" onclick="nextScene(2)">Next</button>
+    </div>
+
+    <div class="scene" id="scene-2">
+        <h2 class="title-regular">Kau adalah Rembulanku</h2>
+        <p class="content-left">
+            "Saat dunia jatuh ke dalam pelukan malam yang pekat,<br>
+            kaulah cahaya lembut yang hadir memberi berkat.<br>
+            Menuntun jemariku melewati bayangan yang kelam,<br>
+            menjadi satu-satunya terang di tengah sunyinya malam."
+        </p>
+        <button class="btn-next" onclick="nextScene(3)">Next</button>
+    </div>
+
+    <div class="scene" id="scene-3">
+        <p class="content-center">
+            "Ada miliaran bintang yang berserakan di tata surya,<br>
+            namun setiap kali aku menengadah, mataku hanya mencari satu pijar—yaitu kamu,<br>
+            yang selalu bersinar paling terang di konstelasi hidupku."
+        </p>
+        <button class="btn-next" onclick="nextScene(4)">Next</button>
+    </div>
+
+    <div class="scene" id="scene-4">
+        <p class="content-center">
+            "Kau bagaikan bulan yang menerangi lautan,<br>
+            Bagai bintang yang menghiasi langit dengan menawan.<br> 
+            Namun ku hanyalah lautan yang memiliki pantulanmu,<br>
+            Tanpa pernah memilikimu.<br> 
+            Mencintaimu adalah caraku merayakan sunyi yang paling abadi."
+        </p>
+        <div class="signature">-Cantikania Finata</div>
+        <button class="btn-next" onclick="nextScene('home')">End</button>
+    </div>
+
+    <script>
+        function nextScene(sceneIndex) {
+            // Sembunyikan semua scene
+            const scenes = document.querySelectorAll('.scene');
+            scenes.forEach(scene => {
+                scene.classList.remove('active');
+            });
+
+            // Tampilkan scene yang dituju
+            if (sceneIndex === 'home') {
+                document.getElementById('scene-home').classList.add('active');
+            } else {
+                document.getElementById(`scene-${sceneIndex}`).classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
+
