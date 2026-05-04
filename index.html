@@ -119,12 +119,14 @@
             background: none;
             border: none;
             cursor: pointer;
-            z-index: 10;
+            z-index: 999;
             padding: 10px 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
             opacity: 0.8;
             transition: opacity 0.3s;
+            pointer-events: auto;
+    
         }
 
         .btn-next:hover {
@@ -150,6 +152,7 @@
     top: 80px;
     width: 100%;
     height: 150px;
+    pointer-events: none;
 }
 
 /* ===== BINTANG ===== */
@@ -160,6 +163,7 @@
     background: white;
     border-radius: 50%;
     box-shadow: 0 0 6px white;
+    pointer-events:none;
     
     opacity: 0;
     z-index: 2;
@@ -226,33 +230,36 @@
         </div>
 
         <div class="page" id="page-0">
-            <!-- BINTANG BIDUK -->
-<div class="biduk">
-    <span class="star s1"></span>
-    <span class="star s2"></span>
-    <span class="star s3"></span>
-    <span class="star s4"></span>
-    <span class="star s5"></span>
-    <span class="star s6"></span>
-    <span class="star s7"></span>
 
-    <!-- GARIS KONSTELASI -->
-<div class="line l1"></div>
-<div class="line l2"></div>
-<div class="line l3"></div>
-<div class="line l4"></div>
-<div class="line l5"></div>
-<div class="line l6"></div>
-    
+    <!-- BINTANG BIDUK -->
+    <div class="biduk">
+        <span class="star s1"></span>
+        <span class="star s2"></span>
+        <span class="star s3"></span>
+        <span class="star s4"></span>
+        <span class="star s5"></span>
+        <span class="star s6"></span>
+        <span class="star s7"></span>
+
+        <!-- GARIS KONSTELASI (kalau sudah pakai) -->
+        <div class="line l1"></div>
+        <div class="line l2"></div>
+        <div class="line l3"></div>
+        <div class="line l4"></div>
+        <div class="line l5"></div>
+        <div class="line l6"></div>
+    </div>
+
+    <h2 class="font-beau color-lemon title-30">Bintang Biduku</h2>
+
+    <div class="text-left font-mont">
+        "Saat samudera kehidupan bergejolak tanpa suara,<br>
+        kau muncul sebagai titik utara yang paling setia.<br>
+        Menjadi kompas saat aku kehilangan arah,<br>
+        menuntunku pulang saat langkah terasa lelah."
+    </div>
+
 </div>
-            <h2 class="font-beau color-lemon title-30">Bintang Biduku</h2>
-            <div class="text-left font-mont">
-                "Saat samudera kehidupan bergejolak tanpa suara,<br>
-                kau muncul sebagai titik utara yang paling setia.<br>
-                Menjadi kompas saat aku kehilangan arah,<br>
-                menuntunku pulang saat langkah terasa lelah."
-            </div>
-        </div>
 
         <div class="page" id="page-1">
             <h2 class="font-beau color-lemon title-30">Kau adalah Matahariku</h2>
