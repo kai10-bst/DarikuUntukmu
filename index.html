@@ -215,33 +215,31 @@
 </audio>
     
     <script>
-        // Array berisi ID dari setiap halaman
-        const pages = ['page-home', 'page-0', 'page-1', 'page-2', 'page-3', 'page-4'];
-        let currentPageIndex = 0;
+    const pages = ['page-home', 'page-0', 'page-1', 'page-2', 'page-3', 'page-4'];
+    let currentPageIndex = 0;
 
-        function nextPage() {
-    const music = document.getElementById("bg-music");
+    function nextPage() {
+        const music = document.getElementById("bg-music");
 
-    // Set volume
-    music.volume = 0.4;
+        // Set volume (cukup sekali, tapi gak masalah di sini)
+        music.volume = 0.4;
 
-    // Play saat klik pertama
-    if (currentPageIndex === 0) {
-        music.play();
-    }
-
-    document.getElementById(pages[currentPageIndex]).classList.remove('active');
-    
-    currentPageIndex++;
-
-    if (currentPageIndex >= pages.length - 1) {
-        currentPageIndex = pages.length - 1;
-        document.getElementById('next-btn').classList.add('hidden');
-    }
-
-    document.getElementById(pages[currentPageIndex]).classList.add('active');
+        // Play saat klik pertama
+        if (currentPageIndex === 0) {
+            music.play().catch(() => {});
         }
+
+        document.getElementById(pages[currentPageIndex]).classList.remove('active');
+        
+        currentPageIndex++;
+
+        if (currentPageIndex >= pages.length - 1) {
+            currentPageIndex = pages.length - 1;
+            document.getElementById('next-btn').classList.add('hidden');
         }
+
+        document.getElementById(pages[currentPageIndex]).classList.add('active');
+    }
     </script>
 
 </body>
