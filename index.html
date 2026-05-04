@@ -145,45 +145,38 @@
             text-align: center;
             z-index: 2;
         }
-
-        /* === BINTANG BIDUK === */
-.biduk {
+        .biduk {
     position: absolute;
     top: 150px;       /* Geser agak ke atas */
     width: 100%;
     height: 300px;   /* Tinggikan dari 150px ke 250px */
     pointer-events: none;
-}
-
-/* ===== BINTANG ===== */
-.star {
+        }
+        .star {
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 5px; 
+    height: 5px;
     background: white;
     border-radius: 50%;
-    box-shadow: 0 0 8px white, 0 0 12px rgba(255, 255, 255, 0.5); /* Cahaya lebih lembut */
+    box-shadow: 0 0 10px white;
     opacity: 0;
     z-index: 2;
     pointer-events: none;
+    /* Gabungkan animasi muncul dan kerlip */
     animation: fadeStar 1.5s forwards, twinkle 2s infinite ease-in-out;
+        }
+        
 
-/* Animasi Kerlip (Twinkle) */
-@keyframes twinkle {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-
-}
 /* Posisi Bintang: Lebih ke bawah dan membentuk gayung */
-.s1 { top: 0px;   left: 85%; animation-delay: 0.5s, 2s; } /* Ujung gagang */
-.s2 { top: 30px;  left: 70%; animation-delay: 1.0s, 2.5s; }
-.s3 { top: 65px;  left: 60%; animation-delay: 1.5s, 3s; }   /* Tekukan gagang */
-.s4 { top: 105px; left: 58%; animation-delay: 2.0s, 3.5s; } /* Sudut wadah 1 */
-.s5 { top: 155px; left: 55%; animation-delay: 2.5s, 4s; }   /* Dasar wadah 1 */
-.s6 { top: 145px; left: 30%; animation-delay: 3.0s, 4.5s; } /* Dasar wadah 2 */
-.s7 { top: 95px;  left: 28%; animation-delay: 3.5s, 5s; }   /* Sudut wadah 2 */
-
+.s1 { top: 10px;  left: 80%; animation-delay: 0.5s, 2s; }
+.s2 { top: 40px;  left: 65%; animation-delay: 1.0s, 2.5s; }
+.s3 { top: 75px;  left: 55%; animation-delay: 1.5s, 3s; }
+.s4 { top: 115px; left: 52%; animation-delay: 2.0s, 3.5s; }
+.s5 { top: 165px; left: 48%; animation-delay: 2.5s, 4s; }
+.s6 { top: 155px; left: 25%; animation-delay: 3.0s, 4.5s; }
+.s7 { top: 105px; left: 22%; animation-delay: 3.5s, 5s; }
 }
+
 /* ===== ANIMASI BINTANG ===== */
 @keyframes fadeStar {
     from {
@@ -294,7 +287,6 @@ function nextPage() {
         if (currentPageIndex === 0) {
             music.play().catch(e => console.log("Autoplay dicegah browser"));
         }
-    }
 
     // Sembunyikan halaman sekarang
     const currentElement = document.getElementById(pages[currentPageIndex]);
@@ -329,20 +321,12 @@ function nextPage() {
     } 
 }
 
-function goHome() {
-    // Sembunyikan halaman terakhir
-    document.getElementById(pages[currentPageIndex]).classList.remove('active');
-    
-    // Reset index
-    currentPageIndex = 0;
-    
-    // Tampilkan halaman pertama
-    document.getElementById(pages[currentPageIndex]).classList.add('active');
-    
-    // Tampilkan kembali tombol Next
-    const nextBtn = document.getElementById('next-btn');
-    if (nextBtn) {
-        nextBtn.classList.remove('hidden');
+    function goHome() {
+        document.getElementById(pages[currentPageIndex]).classList.remove('active');
+        currentPageIndex = 0;
+        document.getElementById(pages[currentPageIndex]).classList.add('active');
+        const nextBtn = document.getElementById('next-btn');
+        if (nextBtn) nextBtn.classList.remove('hidden');
     }
 }
 </script>
