@@ -317,8 +317,6 @@ const pages = ['page-home', 'page-0', 'page-1', 'page-2', 'page-3', 'page-4'];
 let currentPageIndex = 0;
 
 function nextPage() {
-    // alert("NEXT KEDETECT"); // Debugging
-
     const music = document.getElementById("bg-music");
     if (music) {
         music.volume = 0.4;
@@ -350,17 +348,18 @@ function nextPage() {
         nextElement.classList.add('active');
     }
 
-    // ⭐ Trigger animasi kalau masuk page-0
+    // Trigger animasi kalau masuk page-0
     if (pages[currentPageIndex] === 'page-0') {
         const stars = document.querySelectorAll('.star');
         stars.forEach(star => {
             star.style.animation = 'none';
-            void star.offsetHeight; // Trick untuk trigger reflow agar animasi restart
+            void star.offsetHeight; 
             star.style.animation = '';
         });
-    } // <-- Tadi di sini kamu pakai ')' bukan '}'
+    } 
 }
-    function goHome() {
+
+function goHome() {
     // Sembunyikan halaman terakhir
     document.getElementById(pages[currentPageIndex]).classList.remove('active');
     
@@ -370,13 +369,13 @@ function nextPage() {
     // Tampilkan halaman pertama
     document.getElementById(pages[currentPageIndex]).classList.add('active');
     
-    // Tampilkan kembali tombol Next jika tadi disembunyikan
+    // Tampilkan kembali tombol Next
     const nextBtn = document.getElementById('next-btn');
-    if (nextBtn) nextBtn.classList.remove('hidden');
-         }
+    if (nextBtn) {
+        nextBtn.classList.remove('hidden');
     }
+}
 </script>
-
 
 </body>
 </html>
