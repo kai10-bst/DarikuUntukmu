@@ -163,12 +163,12 @@
     background: white;
     border-radius: 50%;
     box-shadow: 0 0 6px white;
-    pointer-events:none;
     
     opacity: 0;
     z-index: 2;
     
     animation: fadeStar 1s forwards;
+    pointer-events:none;
 }
 
 /* ===== GARIS KONSTELASI ===== */
@@ -303,9 +303,9 @@
             
              <button class="btn-next" onclick="goHome()">End</button>
             
-        </div>
+</div> 
 
-    </div>
+</div> 
     
 <audio id="bg-music" loop>
     <source src="space-song.mp3" type="audio/mpeg">
@@ -316,8 +316,9 @@
     let currentPageIndex = 0;
 
     function nextPage() {
-    const music = document.getElementById("bg-music");
+    alert("NEXT KEDETECT");
 
+    const music = document.getElementById("bg-music");
     music.volume = 0.4;
 
     // play musik pertama kali
@@ -325,7 +326,7 @@
         music.play().catch(() => {});
     }
 
-    // hide page sekarang
+    // sembunyikan page sekarang
     document.getElementById(pages[currentPageIndex]).classList.remove('active');
 
     // naik page
@@ -335,8 +336,7 @@
     if (currentPageIndex >= pages.length - 1) {
         currentPageIndex = pages.length - 1;
         document.getElementById('next-btn').classList.add('hidden');
-    }
-
+            }
     // show page baru
     document.getElementById(pages[currentPageIndex]).classList.add('active');
 
@@ -349,6 +349,7 @@
             star.offsetHeight; // reset
             star.style.animation = '';
         });
+    )
 }
     </script>
 
