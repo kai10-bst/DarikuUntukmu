@@ -149,7 +149,7 @@
         /* === BINTANG BIDUK === */
 .biduk {
     position: absolute;
-    top: 10px;       /* Geser agak ke atas */
+    top: 150px;       /* Geser agak ke atas */
     width: 100%;
     height: 300px;   /* Tinggikan dari 150px ke 250px */
     pointer-events: none;
@@ -174,14 +174,15 @@
     50% { opacity: 0.5; transform: scale(0.8); }
 
 }
-/* Bentuk Gayung Biduk yang Proporsional */
-.s1 { top: 10px;  left: 80%; animation-delay: 0.5s, 2s; } /* Ujung gagang */
-.s2 { top: 35px;  left: 65%; animation-delay: 1.0s, 2.5s; }
-.s3 { top: 70px;  left: 55%; animation-delay: 1.5s, 3s; }   /* Tekukan gagang */
-.s4 { top: 110px; left: 52%; animation-delay: 2.0s, 3.5s; } /* Sudut wadah 1 */
-.s5 { top: 160px; left: 48%; animation-delay: 2.5s, 4s; }   /* Dasar wadah 1 */
-.s6 { top: 150px; left: 25%; animation-delay: 3.0s, 4.5s; } /* Dasar wadah 2 */
-.s7 { top: 100px; left: 22%; animation-delay: 3.5s, 5s; }   /* Sudut wadah 2 */
+/* Posisi Bintang: Lebih ke bawah dan membentuk gayung */
+.s1 { top: 0px;   left: 85%; animation-delay: 0.5s, 2s; } /* Ujung gagang */
+.s2 { top: 30px;  left: 70%; animation-delay: 1.0s, 2.5s; }
+.s3 { top: 65px;  left: 60%; animation-delay: 1.5s, 3s; }   /* Tekukan gagang */
+.s4 { top: 105px; left: 58%; animation-delay: 2.0s, 3.5s; } /* Sudut wadah 1 */
+.s5 { top: 155px; left: 55%; animation-delay: 2.5s, 4s; }   /* Dasar wadah 1 */
+.s6 { top: 145px; left: 30%; animation-delay: 3.0s, 4.5s; } /* Dasar wadah 2 */
+.s7 { top: 95px;  left: 28%; animation-delay: 3.5s, 5s; }   /* Sudut wadah 2 */
+
 }
 /* ===== ANIMASI BINTANG ===== */
 @keyframes fadeStar {
@@ -194,23 +195,6 @@
         transform: scale(1);
     }
 }
-
-/* ===== ANIMASI GARIS ===== */
-@keyframes fadeLine {
-    from { opacity: 0; }
-    to { opacity: 0.6; }
-
-        }
-        
-/* setiap bintang punya delay beda */
-.s1 { top: 10px; left: 40%; animation: fadeStar 1.5s forwards 0s; }
-.s2 { top: 30px; left: 50%; animation: fadeStar 1.5s forwards 0.5s; }
-.s3 { top: 50px; left: 60%; animation: fadeStar 1.5s forwards 1s; }
-.s4 { top: 70px; left: 55%; animation: fadeStar 1.5s forwards 1.5s; }
-.s5 { top: 90px; left: 45%; animation: fadeStar 1.5s forwards 2s; }
-.s6 { top: 70px; left: 35%; animation: fadeStar 1.5s forwards 2.5s; }
-.s7 { top: 50px; left: 30%; animation: fadeStar 1.5s forwards 3s; }
-
     </style>
 </head>
 <body>
