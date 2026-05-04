@@ -175,7 +175,6 @@
 .s5 { top: 165px; left: 48%; animation-delay: 2.5s, 4s; }
 .s6 { top: 155px; left: 25%; animation-delay: 3.0s, 4.5s; }
 .s7 { top: 105px; left: 22%; animation-delay: 3.5s, 5s; }
-}
 
 /* ===== ANIMASI BINTANG ===== */
 @keyframes fadeStar {
@@ -287,6 +286,7 @@ function nextPage() {
         if (currentPageIndex === 0) {
             music.play().catch(e => console.log("Autoplay dicegah browser"));
         }
+    }
 
     // Sembunyikan halaman sekarang
     const currentElement = document.getElementById(pages[currentPageIndex]);
