@@ -139,7 +139,7 @@
 
         .signature-container {
             position: absolute;
-            bottom: 300px;
+            bottom: 150px;
             left: 0;
             width: 100%;
             text-align: center;
@@ -149,9 +149,9 @@
         /* === BINTANG BIDUK === */
 .biduk {
     position: absolute;
-    top: 50px;       /* Geser agak ke atas */
+    top: 10px;       /* Geser agak ke atas */
     width: 100%;
-    height: 250px;   /* Tinggikan dari 150px ke 250px */
+    height: 300px;   /* Tinggikan dari 150px ke 250px */
     pointer-events: none;
 }
 
@@ -167,26 +167,22 @@
     z-index: 2;
     pointer-events: none;
     animation: fadeStar 1.5s forwards, twinkle 2s infinite ease-in-out;
-}
 
 /* Animasi Kerlip (Twinkle) */
 @keyframes twinkle {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(0.8); }
+
 }
-
-/* Posisi Bintang Membentuk Gayung Terbalik/Samping */
-.s1 { top: 20px;  left: 85%; animation-delay: 0.5s, 2.5s; } /* Ujung Gagang */
-.s2 { top: 45px;  left: 70%; animation-delay: 1.0s, 3.0s; }
-.s3 { top: 75px;  left: 60%; animation-delay: 1.5s, 3.5s; } /* Siku Gagang */
-.s4 { top: 110px; left: 58%; animation-delay: 2.0s, 4.0s; } /* Titik Atas Wadah 1 */
-.s5 { top: 155px; left: 55%; animation-delay: 2.5s, 4.5s; } /* Titik Bawah Wadah 1 */
-.s6 { top: 145px; left: 30%; animation-delay: 3.0s, 5.0s; } /* Titik Bawah Wadah 2 */
-.s7 { top: 95px;  left: 28%; animation-delay: 3.5s, 5.5s; } /* Titik Atas Wadah 2 */
-
-
-
-
+/* Bentuk Gayung Biduk yang Proporsional */
+.s1 { top: 10px;  left: 80%; animation-delay: 0.5s, 2s; } /* Ujung gagang */
+.s2 { top: 35px;  left: 65%; animation-delay: 1.0s, 2.5s; }
+.s3 { top: 70px;  left: 55%; animation-delay: 1.5s, 3s; }   /* Tekukan gagang */
+.s4 { top: 110px; left: 52%; animation-delay: 2.0s, 3.5s; } /* Sudut wadah 1 */
+.s5 { top: 160px; left: 48%; animation-delay: 2.5s, 4s; }   /* Dasar wadah 1 */
+.s6 { top: 150px; left: 25%; animation-delay: 3.0s, 4.5s; } /* Dasar wadah 2 */
+.s7 { top: 100px; left: 22%; animation-delay: 3.5s, 5s; }   /* Sudut wadah 2 */
+}
 /* ===== ANIMASI BINTANG ===== */
 @keyframes fadeStar {
     from {
