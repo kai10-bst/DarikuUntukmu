@@ -323,13 +323,29 @@
     0% { transform: translateX(-10%) rotate(-5deg); opacity: 0.5; }
     100% { transform: translateX(10%) rotate(5deg); opacity: 0.9; }
 }
+        .moon {
+    position: absolute;
+    top: 30px; /* Jarak dari atas */
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg); /* Mengatur posisi tengah dan kemiringan bulan */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    /* Membuat bentuk sabit dengan bayangan */
+    box-shadow: 12px 8px 0 0 white; 
+    /* Memberikan efek cahaya agar menyatu dengan aurora/nebula */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+    z-index: 1;
+    opacity: 0.9;
+        }
+        
     </style>
 </head>
 <body>
 
     <div id="game-container">
         <div class="stars"></div>
-
+        <div class="moon"></div>
         <div class="shooting-stars">
     <div class="wish"></div>
     <div class="wish"></div>
