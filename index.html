@@ -287,33 +287,34 @@
         transform: translateX(-500px) translateY(500px) rotate(-45deg) scale(0);
         opacity: 0;
     }
-    
-    #game-container::before {
+} /* <--- Kurung penutup ini yang tadi hilang di kodemu */
+
+/* Efek Nebula */
+#game-container::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Gradasi acak untuk kesan awan galaksi */
     background: 
         radial-gradient(circle at 20% 30%, rgba(68, 0, 255, 0.2), transparent 40%),
         radial-gradient(circle at 80% 70%, rgba(255, 0, 150, 0.1), transparent 40%);
     pointer-events: none;
-    z-index: 1; /* Di atas background dasar, di bawah bintang */
+    z-index: 1;
 }
-/* Efek Aurora yang diperkuat */
+
+/* Efek Aurora yang diturunkan posisinya agar tidak terpotong */
 #game-container::after {
     content: "";
     position: absolute;
-    top: -50px; /* Lebih tinggi sedikit */
+    top: -50px; 
     left: -50%;
     width: 200%;
-    height: 300px;
-    /* Warna dibuat sedikit lebih terang (0.15 dan 0.1) agar terlihat */
-    background: radial-gradient(ellipse at bottom, rgba(0, 255, 150, 0.15), rgba(0, 200, 255, 0.1), transparent 70%);
+    height: 400px;
+    background: radial-gradient(ellipse at bottom, rgba(0, 255, 150, 0.2), rgba(0, 200, 255, 0.15), transparent 70%);
     filter: blur(60px);
-    z-index: 2; /* Naikkan ke 2 agar di atas nebula */
+    z-index: 2; 
     pointer-events: none;
     animation: auroraDance 15s infinite alternate ease-in-out;
 }
