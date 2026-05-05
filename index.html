@@ -145,47 +145,49 @@
             text-align: center;
             z-index: 2;
         }
-        .biduk {
-    position: absolute;
-    top: 150px;       /* Geser agak ke atas */
-    width: 100%;
-    height: 300px;   /* Tinggikan dari 150px ke 250px */
-    pointer-events: none;
+                .biduk {
+            position: absolute;
+            top: 150px;       
+            width: 100%;
+            height: 300px;
+            pointer-events: none;
         }
+
         .star {
-    position: absolute;
-    width: 5px; 
-    height: 5px;
-    background: white;
-    border-radius: 50%;
-    box-shadow: 0 0 10px white;
-    opacity: 0;
-    z-index: 2;
-    pointer-events: none;
-    /* Gabungkan animasi muncul dan kerlip */
-    animation: fadeStar 1.5s forwards, twinkle 2s infinite ease-in-out;
+            position: absolute;
+            width: 5px; 
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+            /* Gabungkan animasi muncul dan kerlip */
+            animation: fadeStar 1.5s forwards, twinkle 2s infinite ease-in-out;
+        }
+
+        /* Posisi Bintang Membentuk Gayung Biduk */
+        .s1 { top: 10px;  left: 80%; animation-delay: 0.5s, 2s; }
+        .s2 { top: 40px;  left: 65%; animation-delay: 1.0s, 2.5s; }
+        .s3 { top: 75px;  left: 55%; animation-delay: 1.5s, 3s; }
+        .s4 { top: 115px; left: 52%; animation-delay: 2.0s, 3.5s; }
+        .s5 { top: 165px; left: 48%; animation-delay: 2.5s, 4s; }
+        .s6 { top: 155px; left: 25%; animation-delay: 3.0s, 4.5s; }
+        .s7 { top: 105px; left: 22%; animation-delay: 3.5s, 5s; }
+
+        /* Animasi Muncul */
+        @keyframes fadeStar {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Animasi Kerlip */
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.8); }
         }
         
-
-/* Posisi Bintang: Lebih ke bawah dan membentuk gayung */
-.s1 { top: 10px;  left: 80%; animation-delay: 0.5s, 2s; }
-.s2 { top: 40px;  left: 65%; animation-delay: 1.0s, 2.5s; }
-.s3 { top: 75px;  left: 55%; animation-delay: 1.5s, 3s; }
-.s4 { top: 115px; left: 52%; animation-delay: 2.0s, 3.5s; }
-.s5 { top: 165px; left: 48%; animation-delay: 2.5s, 4s; }
-.s6 { top: 155px; left: 25%; animation-delay: 3.0s, 4.5s; }
-.s7 { top: 105px; left: 22%; animation-delay: 3.5s, 5s; }
-
-/* ===== ANIMASI BINTANG ===== */
-@keyframes fadeStar {
-    from {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
 }
     </style>
 </head>
@@ -280,13 +282,14 @@ let currentPageIndex = 0;
 
 function nextPage() {
     const music = document.getElementById("bg-music");
+    
+    // Logika Musik
     if (music) {
         music.volume = 0.4;
-        // Play musik saat berpindah dari halaman pertama
         if (currentPageIndex === 0) {
-            music.play().catch(e => console.log("Autoplay dicegah browser"));
+            music.play().catch(e => console.log("Autoplay dicegah"));
         }
-    }
+    } // <--- KURUNG PENUTUP INI YANG TADI KAMU LUPA
 
     // Sembunyikan halaman sekarang
     const currentElement = document.getElementById(pages[currentPageIndex]);
@@ -294,10 +297,10 @@ function nextPage() {
         currentElement.classList.remove('active');
     }
 
-    // Naikkan index halaman
+    // Naikkan index
     currentPageIndex++;
 
-    // Batas akhir: jika mencapai halaman terakhir
+    // Cek batas halaman
     if (currentPageIndex >= pages.length - 1) {
         currentPageIndex = pages.length - 1;
         const nextBtn = document.getElementById('next-btn');
@@ -310,7 +313,7 @@ function nextPage() {
         nextElement.classList.add('active');
     }
 
-    // Trigger animasi kalau masuk page-0
+    // Reset Animasi Bintang saat masuk page-0
     if (pages[currentPageIndex] === 'page-0') {
         const stars = document.querySelectorAll('.star');
         stars.forEach(star => {
@@ -328,8 +331,7 @@ function nextPage() {
         const nextBtn = document.getElementById('next-btn');
         if (nextBtn) nextBtn.classList.remove('hidden');
     }
-}
 </script>
-
+    
 </body>
 </html>
