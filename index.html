@@ -302,31 +302,25 @@
     pointer-events: none;
     z-index: 1; /* Di atas background dasar, di bawah bintang */
 }
-/* Efek Aurora di Langit Atas */
+/* Efek Aurora yang diperkuat */
 #game-container::after {
     content: "";
     position: absolute;
-    top: -100px;
+    top: -50px; /* Lebih tinggi sedikit */
     left: -50%;
     width: 200%;
-    height: 400px;
-    /* Perpaduan warna hijau aurora dan biru galaksi yang sangat transparan */
-    background: radial-gradient(ellipse at bottom, rgba(0, 255, 150, 0.08), rgba(0, 200, 255, 0.05), transparent 70%);
-    filter: blur(50px);
-    z-index: 1; /* Di bawah teks, tapi di atas nebula */
+    height: 300px;
+    /* Warna dibuat sedikit lebih terang (0.15 dan 0.1) agar terlihat */
+    background: radial-gradient(ellipse at bottom, rgba(0, 255, 150, 0.15), rgba(0, 200, 255, 0.1), transparent 70%);
+    filter: blur(60px);
+    z-index: 2; /* Naikkan ke 2 agar di atas nebula */
     pointer-events: none;
-    animation: auroraDance 12s infinite alternate ease-in-out;
+    animation: auroraDance 15s infinite alternate ease-in-out;
 }
 
 @keyframes auroraDance {
-    0% {
-        transform: translateX(-10%) translateY(0) rotate(-3deg) scaleY(1);
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateX(10%) translateY(20px) rotate(3deg) scaleY(1.2);
-        opacity: 1;
-    }
+    0% { transform: translateX(-10%) rotate(-5deg); opacity: 0.5; }
+    100% { transform: translateX(10%) rotate(5deg); opacity: 0.9; }
 }
     </style>
 </head>
