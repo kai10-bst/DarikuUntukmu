@@ -60,6 +60,7 @@
         }
 
         /* Update CSS untuk Page Transition */
+/* Update CSS untuk Page Transition */
 .page {
     position: absolute;
     top: 0;
@@ -72,15 +73,18 @@
     align-items: center;
     padding: 30px;
     
-    /* State Awal: Transparan, Blur, dan Skala Kecil */
+    /* State Awal: Ngeblur dan Transparan */
     opacity: 0;
     visibility: hidden;
-    filter: blur(20px) brightness(0.5);
+    filter: blur(20px);
     transform: scale(1.1);
+    
+    /* Transisi KELUAR (saat halaman diganti) */
     transition: 
-        opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
-        filter 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
-        transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity 1s ease-in, 
+        filter 1s ease-in, 
+        transform 1s ease-in,
+        visibility 0s 1s; /* Penting: Tahan visibility 1 detik biar bisa fade-out */
     z-index: 2;
 }
 
@@ -88,22 +92,29 @@
 .page.active {
     opacity: 1;
     visibility: visible;
-    filter: blur(0px) brightness(1.1);
+    filter: blur(0px);
     transform: scale(1);
-    /* Garis di bawah ini yang memicu efek Glow */
-    animation: cinematicGlow 3s infinite alternate;
+    
+    /* Transisi MASUK (saat halaman muncul) */
+    transition: 
+        opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        filter 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        transform 1.8s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s 0s; /* Langsung muncul */
+        
+    /* Animasi glow nunggu transisi blur selesai (delay 1.5 detik) */
+    animation: cinematicGlow 3s infinite alternate 1.5s;
 }
 
-/* Efek Cahaya Berdenyut (Glow) */
+/* Efek Cahaya Berdenyut kita ganti pakai text-shadow biar nggak nabrak blur */
 @keyframes cinematicGlow {
     0% {
-        filter: blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0));
+        text-shadow: 0 0 0px rgba(255,255,255,0);
     }
     100% {
-        filter: blur(0px) brightness(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
 }
-
 /* Menghaluskan transisi saat keluar */
 .page:not(.active) {
     transition: opacity 1s ease-in, filter 1s ease-in;
