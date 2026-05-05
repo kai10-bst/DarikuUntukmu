@@ -227,8 +227,67 @@
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.6; transform: scale(0.8); }
         }
-        
+        /* Container Bintang Jatuh */
+.shooting-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Di bawah teks, tapi di atas background */
+    pointer-events: none;
 }
+
+/* Animasi Inti Bintang Jatuh */
+.wish {
+    position: absolute;
+    top: -50px;
+    left: 100%; /* Mulai dari kanan luar layar */
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 0 0 15px 2px white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: shooting 4s linear infinite;
+}
+
+/* Ekor Bintang Jatuh */
+.wish::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, white, transparent);
+}
+
+/* Timing Berbeda untuk Setiap Bintang agar Tidak Barengan */
+.wish:nth-child(1) { top: 10%; animation-delay: 2s; }
+.wish:nth-child(2) { top: 30%; animation-delay: 5s; }
+.wish:nth-child(3) { top: 50%; animation-delay: 8s; }
+.wish:nth-child(4) { top: 20%; animation-delay: 12s; }
+
+@keyframes shooting {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-45deg) scale(0);
+        opacity: 0;
+    }
+    10% {
+        transform: translateX(-100px) translateY(100px) rotate(-45deg) scale(1);
+        opacity: 1;
+    }
+    30% {
+        transform: translateX(-500px) translateY(500px) rotate(-45deg) scale(1);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-500px) translateY(500px) rotate(-45deg) scale(0);
+        opacity: 0;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -236,8 +295,15 @@
     <div id="game-container">
         <div class="stars"></div>
 
-        <button id="next-btn" class="btn-next" onclick="nextPage()">Next</button>
+        <div class="shooting-stars">
+    <div class="wish"></div>
+    <div class="wish"></div>
+    <div class="wish"></div>
+    <div class="wish"></div>
+        </div>
+        
 
+        <button id="next-btn" class="btn-next" onclick="nextPage()">Next</button>
         <div class="page active" id="page-home">
             <h1 class="font-beau color-gold title-50">Dariku Untukmu</h1>
         </div>
