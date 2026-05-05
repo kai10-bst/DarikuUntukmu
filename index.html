@@ -59,27 +59,55 @@
             z-index: 1;
         }
 
-        .page {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 1s ease-in-out;
-            z-index: 2;
-        }
+        /* Update CSS untuk Page Transition */
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    
+    /* State Awal: Transparan, Blur, dan Skala Kecil */
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(20px) brightness(0.5);
+    transform: scale(1.1);
+    transition: 
+        opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        filter 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+}
 
-        .page.active {
-            opacity: 1;
-            visibility: visible;
-        }
+/* State Aktif: Cinematic Reveal */
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0px) brightness(1.1);
+    transform: scale(1);
+    animation: cinematicGlow 3s infinite alternate;
+}
+
+/* Efek Cahaya Berdenyut (Glow) */
+@keyframes cinematicGlow {
+    0% {
+        filter: blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0));
+    }
+    100% {
+        filter: blur(0px) brightness(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+    }
+}
+
+/* Menghaluskan transisi saat keluar */
+.page:not(.active) {
+    transition: opacity 1s ease-in, filter 1s ease-in;
+}
+
 
         /* Typography */
         .font-beau {
