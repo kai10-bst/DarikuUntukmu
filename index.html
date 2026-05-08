@@ -23,20 +23,17 @@
             overflow: hidden;
         }
 
-        /* Container menyerupai layar handphone */
         #game-container {
     position: relative;
     width: 100%;
     max-width: 400px;
     height: 100vh;
     max-height: 850px;
-    /* Efek Nebula: Campuran ungu tua, biru malam, dan hitam */
     background: radial-gradient(circle at 50% 50%, #1a0b3d 0%, #020111 70%, #000011 100%);
     overflow: hidden;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-        /* Bintang-bintang background */
         .stars {
             position: absolute;
             top: 0;
@@ -61,8 +58,6 @@
             animation: moveStars 80s linear infinite;
         }
 
-        /* Update CSS untuk Page Transition */
-/* Update CSS untuk Page Transition */
 .page {
     position: absolute;
     top: 0;
@@ -74,41 +69,31 @@
     justify-content: center;
     align-items: center;
     padding: 30px;
-    
-    /* State Awal: Ngeblur dan Transparan */
     opacity: 0;
     visibility: hidden;
     filter: blur(20px);
     transform: scale(1.1);
-    
-    /* Transisi KELUAR (saat halaman diganti) */
     transition: 
         opacity 1s ease-in, 
         filter 1s ease-in, 
         transform 1s ease-in,
-        visibility 0s 1s; /* Penting: Tahan visibility 1 detik biar bisa fade-out */
+        visibility 0s 1s;
     z-index: 2;
 }
 
-/* State Aktif: Cinematic Reveal */
 .page.active {
     opacity: 1;
     visibility: visible;
     filter: blur(0px);
     transform: scale(1);
-    
-    /* Transisi MASUK (saat halaman muncul) */
     transition: 
         opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
         filter 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
         transform 1.8s cubic-bezier(0.4, 0, 0.2, 1),
-        visibility 0s 0s; /* Langsung muncul */
-        
-    /* Animasi glow nunggu transisi blur selesai (delay 1.5 detik) */
+        visibility 0s 0s;
     animation: cinematicGlow 3s infinite alternate 1.5s;
 }
-
-/* Efek Cahaya Berdenyut kita ganti pakai text-shadow biar nggak nabrak blur */
+        
 @keyframes cinematicGlow {
     0% {
         text-shadow: 0 0 0px rgba(255,255,255,0);
@@ -117,13 +102,7 @@
         text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
 }
-/* Menghaluskan transisi saat keluar */
-.page:not(.active) {
-    transition: opacity 1s ease-in, filter 1s ease-in;
-}
 
-
-        /* Typography */
         .font-beau {
             font-family: 'Beau Rivage', cursive;
         }
@@ -149,7 +128,6 @@
             width: 100%;
         }
 
-        /* Next Button */
         .btn-next {
             position: absolute;
             bottom: 50px;
@@ -205,11 +183,9 @@
             opacity: 0;
             z-index: 2;
             pointer-events: none;
-            /* Gabungkan animasi muncul dan kerlip */
             animation: fadeStar 1.5s forwards, twinkle 2s infinite ease-in-out;
         }
 
-        /* Posisi Bintang Membentuk Gayung Biduk */
         .s1 { top: 10px;  left: 80%; animation-delay: 0.5s, 2s; }
         .s2 { top: 40px;  left: 65%; animation-delay: 1.0s, 2.5s; }
         .s3 { top: 75px;  left: 55%; animation-delay: 1.5s, 3s; }
@@ -218,43 +194,39 @@
         .s6 { top: 155px; left: 25%; animation-delay: 3.0s, 4.5s; }
         .s7 { top: 105px; left: 22%; animation-delay: 3.5s, 5s; }
 
-        /* Animasi Muncul */
         @keyframes fadeStar {
             from { opacity: 0; transform: scale(0.5); }
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Animasi Kerlip */
         @keyframes twinkle {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.6; transform: scale(0.8); }
         }
-        /* Container Bintang Jatuh */
+
 .shooting-stars {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Di bawah teks, tapi di atas background */
+    z-index: 1;
     pointer-events: none;
 }
 
-/* Animasi Inti Bintang Jatuh */
 .wish {
     position: absolute;
     top: -50px;
-    left: 100%; /* Mulai dari kanan luar layar */
+    left: 100%;
     width: 2px;
     height: 2px;
     background: white;
     box-shadow: 0 0 15px 2px white;
     border-radius: 50%;
     opacity: 0;
-    animation: shooting 4s linear infinite, depth 4s linear infinite;
+    animation: shooting 4s linear infinite;
 }
 
-/* Ekor Bintang Jatuh */
 .wish::before {
     content: "";
     position: absolute;
@@ -265,7 +237,6 @@
     background: linear-gradient(90deg, white, transparent);
 }
 
-/* Timing Berbeda untuk Setiap Bintang agar Tidak Barengan */
 .wish:nth-child(1) { top: 10%; animation-delay: 2s; }
 .wish:nth-child(2) { top: 30%; animation-delay: 5s; }
 .wish:nth-child(3) { top: 50%; animation-delay: 8s; }
@@ -288,9 +259,8 @@
         transform: translateX(-500px) translateY(500px) rotate(-45deg) scale(0);
         opacity: 0;
     }
-} /* <--- Kurung penutup ini yang tadi hilang di kodemu */
+}
 
-/* Efek Nebula */
 #game-container::before {
     content: "";
     position: absolute;
@@ -306,7 +276,6 @@
     animation: moveNebula 40s ease-in-out infinite alternate;
 }
 
-/* Efek Aurora yang diturunkan posisinya agar tidak terpotong */
 #game-container::after {
     content: "";
     position: absolute;
@@ -333,15 +302,13 @@
 }
         .moon {
     position: absolute;
-    top: 30px; /* Jarak dari atas */
+    top: 30px; 
     left: 50%;
-    transform: translateX(-50%) rotate(-15deg); /* Mengatur posisi tengah dan kemiringan bulan */
+    transform: translateX(-50%) rotate(-15deg);
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    /* Membuat bentuk sabit dengan bayangan */
     box-shadow: 12px 8px 0 0 white; 
-    /* Memberikan efek cahaya agar menyatu dengan aurora/nebula */
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
     z-index: 1;
     opacity: 0.9;
@@ -396,7 +363,6 @@
 
         <div class="page" id="page-0">
 
-    <!-- BINTANG BIDUK -->
     <div class="biduk">
         <span class="star s1"></span>
         <span class="star s2"></span>
@@ -407,7 +373,7 @@
         <span class="star s7"></span>
     </div>
 
-    <h2 class="font-beau color-lemon title-30">Bintang Biduku</h2>
+    <h2 class="font-beau color-lemon title-30">Bintang Bidukku</h2>
 
     <div class="text-left font-mont">
         "Saat samudera kehidupan bergejolak tanpa suara,<br>
@@ -481,31 +447,26 @@ function nextPage() {
         if (currentPageIndex === 0) {
             music.play().catch(e => console.log("Autoplay dicegah"));
         }
-    } // <--- KURUNG PENUTUP INI YANG TADI KAMU LUPA
+    }
 
-    // Sembunyikan halaman sekarang
     const currentElement = document.getElementById(pages[currentPageIndex]);
     if (currentElement) {
         currentElement.classList.remove('active');
     }
 
-    // Naikkan index
     currentPageIndex++;
 
-    // Cek batas halaman
     if (currentPageIndex >= pages.length - 1) {
         currentPageIndex = pages.length - 1;
         const nextBtn = document.getElementById('next-btn');
         if (nextBtn) nextBtn.classList.add('hidden');
     }
 
-    // Tampilkan halaman baru
     const nextElement = document.getElementById(pages[currentPageIndex]);
     if (nextElement) {
         nextElement.classList.add('active');
     }
 
-    // Reset Animasi Bintang saat masuk page-0
     if (pages[currentPageIndex] === 'page-0') {
         const stars = document.querySelectorAll('.star');
         stars.forEach(star => {
